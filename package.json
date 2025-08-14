@@ -1,6 +1,6 @@
 {
-  "name": "tiny-toolbox",
-  "description": "A lightweight utility library with common helper functions for JavaScript/TypeScript projects",
+  "name": "micro-toolbox",
+  "description": "A micro-sized utility library with common helper functions for JavaScript/TypeScript projects",
   "version": "1.0.0",
   "type": "module",
   "main": "dist/index.js",
