@@ -1,7 +1,7 @@
-# Tiny Toolbox - Package Implementation Summary
+# Micro Toolbox - Package Implementation Summary
 
 ## Overview
-Successfully implemented a comprehensive npm utility package called "tiny-toolbox" with over 100 utility functions covering common JavaScript/TypeScript development needs.
+Successfully implemented a comprehensive npm utility package called "micro-toolbox" with over 100 utility functions covering common JavaScript/TypeScript development needs.
 
 ## Package Structure
 
@@ -92,7 +92,7 @@ Successfully implemented a comprehensive npm utility package called "tiny-toolbo
 
 ### Installation
 ```bash
-npm install tiny-toolbox
+npm install micro-toolbox
 ```
 
 ### Basic Usage
@@ -103,7 +103,7 @@ import {
   capitalize, 
   formatCurrency,
   debounce 
-} from 'tiny-toolbox';
+} from 'micro-toolbox';
 
 // Array utilities
 const numbers = range(1, 10); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -124,7 +124,7 @@ const debouncedSearch = debounce(searchFunction, 300);
 ## Package Configuration
 
 ### package.json
-- **Name**: tiny-toolbox
+- **Name**: micro-toolbox
 - **Version**: 1.0.0
 - **Type**: module (ES modules)
 - **Main**: dist/index.js
@@ -162,7 +162,7 @@ const debouncedSearch = debounce(searchFunction, 300);
 7. 🔄 Ready for npm publish
 
 ## Summary
-The tiny-toolbox package is now fully implemented with:
+The micro-toolbox package is now fully implemented with:
 - **100+ utility functions** across 8 categories
 - **Full TypeScript support** with type definitions
 - **ES module compatibility** for modern environments

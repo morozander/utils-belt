@@ -29,12 +29,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/morozander/tiny-toolbox.git"
+    "url": "https://github.com/morozander/micro-toolbox.git"
   },
   "bugs": {
-    "url": "https://github.com/morozander/tiny-toolbox/issues"
+    "url": "https://github.com/morozander/micro-toolbox/issues"
   },
-  "homepage": "https://github.com/morozander/tiny-toolbox#readme",
+  "homepage": "https://github.com/morozander/micro-toolbox#readme",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",

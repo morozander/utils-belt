@@ -1,4 +1,4 @@
-// Basic usage examples for tiny-toolbox
+// Basic usage examples for micro-toolbox
 import {
   // Array utilities
   range,
@@ -37,7 +37,7 @@ import {
   sleep
 } from '../dist/index.js';
 
-console.log('=== Tiny Toolbox Examples ===\n');
+console.log('=== Micro Toolbox Examples ===\n');
 
 // Array utilities
 console.log('Array Utilities:');

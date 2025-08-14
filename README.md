@@ -1,10 +1,10 @@
-# Tiny Toolbox
+# Micro Toolbox
 
-A lightweight utility library with common helper functions for JavaScript/TypeScript projects.
+A micro-sized utility library with common helper functions for JavaScript/TypeScript projects.
 
 ## Features
 
-- 🚀 **Lightweight** - Minimal bundle size with maximum utility
+- 🚀 **Micro-sized** - Minimal bundle size with maximum utility
 - 📦 **Comprehensive** - 100+ utility functions covering common use cases
 - 🔒 **Type Safe** - Full TypeScript support with type definitions
 - 🌐 **Universal** - Works in Node.js and browser environments
@@ -14,7 +14,7 @@ A lightweight utility library with common helper functions for JavaScript/TypeSc
 ## Installation
 
 ```bash
-npm install tiny-toolbox
+npm install micro-toolbox
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ import {
   capitalize, 
   formatCurrency,
   debounce 
-} from 'tiny-toolbox';
+} from 'micro-toolbox';
 
 // Array utilities
 const numbers = range(1, 10); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -58,7 +58,7 @@ const {
   capitalize, 
   formatCurrency,
   debounce 
-} = require('tiny-toolbox');
+} = require('micro-toolbox');
 ```
 
 ## API Reference
@@ -154,7 +154,7 @@ const {
 ### Working with Arrays
 
 ```typescript
-import { range, unique, groupBy, chunk } from 'tiny-toolbox';
+import { range, unique, groupBy, chunk } from 'micro-toolbox';
 
 // Create a range of numbers
 const numbers = range(1, 20, 2); // [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
@@ -178,7 +178,7 @@ const chunks = chunk([1, 2, 3, 4, 5, 6], 2); // [[1, 2], [3, 4], [5, 6]]
 ### Working with Objects
 
 ```typescript
-import { deepClone, pick, omit, get, set } from 'tiny-toolbox';
+import { deepClone, pick, omit, get, set } from 'micro-toolbox';
 
 // Deep clone
 const original = { user: { name: 'John', settings: { theme: 'dark' } } };
@@ -206,7 +206,7 @@ import {
   kebabCase, 
   truncate, 
   stripHtml 
-} from 'tiny-toolbox';
+} from 'micro-toolbox';
 
 // Case conversions
 capitalize('hello world'); // "Hello world"
@@ -222,7 +222,7 @@ stripHtml('<p>Hello <strong>World</strong></p>'); // "Hello World"
 ### Working with Functions
 
 ```typescript
-import { debounce, throttle, memoize, compose } from 'tiny-toolbox';
+import { debounce, throttle, memoize, compose } from 'micro-toolbox';
 
 // Debounce search input
 const debouncedSearch = debounce((query) => {
@@ -259,7 +259,7 @@ import {
   addDays, 
   isToday, 
   getRelativeTime 
-} from 'tiny-toolbox';
+} from 'micro-toolbox';
 
 // Format dates
 const date = new Date();
@@ -284,7 +284,7 @@ import {
   isValidEmail, 
   isValidUrl, 
   validateSchema 
-} from 'tiny-toolbox';
+} from 'micro-toolbox';
 
 // Type checks
 isDefined('hello'); // true
