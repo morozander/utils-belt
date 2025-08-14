@@ -7,22 +7,26 @@
  */
 export function formatDate(
   date: Date,
-  format: string = 'YYYY-MM-DD'
+  format: string = 'MMM DD, YYYY'
 ): string {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
+  const monthName = date.toLocaleDateString('en-US', { month: 'short' });
   const day = String(date.getDate()).padStart(2, '0');
   const hours = String(date.getHours()).padStart(2, '0');
   const minutes = String(date.getMinutes()).padStart(2, '0');
   const seconds = String(date.getSeconds()).padStart(2, '0');
 
   return format
-    .replace('YYYY', String(year))
-    .replace('MM', month)
-    .replace('DD', day)
-    .replace('HH', hours)
-    .replace('mm', minutes)
-    .replace('ss', seconds);
+    .replace(/YYYY/g, String(year))
+    .replace(/yyyy/g, String(year))
+    .replace(/MMM/g, monthName)
+    .replace(/MM/g, month)
+    .replace(/DD/g, day)
+    .replace(/dd/g, day)
+    .replace(/HH/g, hours)
+    .replace(/mm/g, minutes)
+    .replace(/ss/g, seconds);
 }
 
 /**
@@ -201,14 +205,18 @@ export function isTomorrow(date: Date): boolean {
  * Checks if a date is in the past
  */
 export function isPast(date: Date): boolean {
-  return date < new Date();
+  const now = new Date();
+  // Consider current date as not past (same day)
+  return date < new Date(now.getFullYear(), now.getMonth(), now.getDate());
 }
 
 /**
  * Checks if a date is in the future
  */
 export function isFuture(date: Date): boolean {
-  return date > new Date();
+  const now = new Date();
+  // Consider current date as not future (same day)
+  return date > new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 }
 
 /**
@@ -286,35 +294,41 @@ export function getRelativeTime(date: Date): string {
   const now = new Date();
   const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
   
-  if (diffInSeconds < 60) {
+  if (Math.abs(diffInSeconds) < 60) {
     return 'just now';
   }
   
-  const diffInMinutes = Math.floor(diffInSeconds / 60);
+  const diffInMinutes = Math.floor(Math.abs(diffInSeconds) / 60);
   if (diffInMinutes < 60) {
-    return `${diffInMinutes} minute${diffInMinutes === 1 ? '' : 's'} ago`;
+    const suffix = diffInSeconds > 0 ? ' ago' : ' from now';
+    return `${diffInMinutes} minute${diffInMinutes === 1 ? '' : 's'}${suffix}`;
   }
   
   const diffInHours = Math.floor(diffInMinutes / 60);
   if (diffInHours < 24) {
-    return `${diffInHours} hour${diffInHours === 1 ? '' : 's'} ago`;
+    const suffix = diffInSeconds > 0 ? ' ago' : ' from now';
+    return `${diffInHours} hour${diffInHours === 1 ? '' : 's'}${suffix}`;
   }
   
   const diffInDays = Math.floor(diffInHours / 24);
   if (diffInDays < 7) {
-    return `${diffInDays} day${diffInDays === 1 ? '' : 's'} ago`;
+    const suffix = diffInSeconds > 0 ? ' ago' : ' from now';
+    return `${diffInDays} day${diffInDays === 1 ? '' : 's'}${suffix}`;
   }
   
   const diffInWeeks = Math.floor(diffInDays / 7);
   if (diffInWeeks < 4) {
-    return `${diffInWeeks} week${diffInWeeks === 1 ? '' : 's'} ago`;
+    const suffix = diffInSeconds > 0 ? ' ago' : ' from now';
+    return `${diffInWeeks} week${diffInWeeks === 1 ? '' : 's'}${suffix}`;
   }
   
   const diffInMonths = Math.floor(diffInDays / 30);
   if (diffInMonths < 12) {
-    return `${diffInMonths} month${diffInMonths === 1 ? '' : 's'} ago`;
+    const suffix = diffInSeconds > 0 ? ' ago' : ' from now';
+    return `${diffInMonths} month${diffInMonths === 1 ? '' : 's'}${suffix}`;
   }
   
   const diffInYears = Math.floor(diffInDays / 365);
-  return `${diffInYears} year${diffInYears === 1 ? '' : 's'} ago`;
+  const suffix = diffInSeconds > 0 ? ' ago' : ' from now';
+  return `${diffInYears} year${diffInYears === 1 ? '' : 's'}${suffix}`;
 } 

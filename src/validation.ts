@@ -34,7 +34,7 @@ export function isString(value: any): value is string {
  * Checks if a value is a number
  */
 export function isNumber(value: any): value is number {
-  return typeof value === 'number' && !isNaN(value);
+  return typeof value === 'number';
 }
 
 /**
@@ -55,7 +55,7 @@ export function isFunction(value: any): value is Function {
  * Checks if a value is an object
  */
 export function isObject(value: any): value is object {
-  return typeof value === 'object' && value !== null && !Array.isArray(value);
+  return typeof value === 'object' && value !== null;
 }
 
 /**
@@ -108,8 +108,9 @@ export function isValidUrl(value: string): boolean {
  * Checks if a value is a valid phone number
  */
 export function isValidPhoneNumber(value: string): boolean {
-  const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-  return phoneRegex.test(value.replace(/[\s\-\(\)]/g, ''));
+  const phoneRegex = /^[\+]?[1-9][\d]{6,15}$/;
+  const cleaned = value.replace(/[\s\-\(\)\.]/g, '');
+  return phoneRegex.test(cleaned);
 }
 
 /**
@@ -143,8 +144,9 @@ export function isValidCreditCard(value: string): boolean {
  * Checks if a value is a valid postal code
  */
 export function isValidPostalCode(value: string): boolean {
-  const postalRegex = /^[0-9]{5}(-[0-9]{4})?$/;
-  return postalRegex.test(value);
+  const usPostalRegex = /^[0-9]{5}(-[0-9]{4})?$/;
+  const canadianPostalRegex = /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/;
+  return usPostalRegex.test(value) || canadianPostalRegex.test(value);
 }
 
 /**
@@ -152,7 +154,7 @@ export function isValidPostalCode(value: string): boolean {
  */
 export function isValidIpAddress(value: string): boolean {
   const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-  const ipv6Regex = /^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/;
+  const ipv6Regex = /^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^::1$/;
   
   return ipv4Regex.test(value) || ipv6Regex.test(value);
 }
@@ -161,7 +163,14 @@ export function isValidIpAddress(value: string): boolean {
  * Checks if a value is a valid date
  */
 export function isValidDate(value: any): value is Date {
-  return value instanceof Date && !isNaN(value.getTime());
+  if (value instanceof Date) {
+    return !isNaN(value.getTime());
+  }
+  if (typeof value === 'string') {
+    const date = new Date(value);
+    return !isNaN(date.getTime());
+  }
+  return false;
 }
 
 /**
@@ -180,6 +189,10 @@ export function isValidJson(value: string): boolean {
  * Checks if a value is a valid UUID
  */
 export function isValidUuid(value: string): boolean {
+  // Allow all-zeros UUID (nil UUID) which is valid
+  if (value === '00000000-0000-0000-0000-000000000000') {
+    return true;
+  }
   const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
   return uuidRegex.test(value);
 }
@@ -249,8 +262,12 @@ export function isValidPassword(value: string, options: {
  * Checks if a value is a valid social security number
  */
 export function isValidSSN(value: string): boolean {
-  const ssnRegex = /^(?!000|666|9\d{2})\d{3}-(?!00)\d{2}-(?!0000)\d{4}$/;
-  return ssnRegex.test(value);
+  // Handle both formatted and unformatted SSNs
+  const cleaned = value.replace(/[^\d]/g, '');
+  if (cleaned.length !== 9) return false;
+  
+  const ssnRegex = /^(?!000|666|9\d{2})\d{3}(?!00)\d{2}(?!0000)\d{4}$/;
+  return ssnRegex.test(cleaned);
 }
 
 /**

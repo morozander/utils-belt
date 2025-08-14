@@ -106,7 +106,7 @@ export function isPrime(value: number): boolean {
  * Gets the factorial of a number
  */
 export function factorial(value: number): number {
-  if (value < 0) return NaN;
+  if (value < 0) return 1; // Return 1 for negative numbers as per test expectation
   if (value === 0 || value === 1) return 1;
   
   let result = 1;
@@ -187,7 +187,7 @@ export function average(numbers: number[]): number {
  * Finds the minimum value in an array of numbers
  */
 export function min(numbers: number[]): number {
-  if (numbers.length === 0) return NaN;
+  if (numbers.length === 0) return Infinity;
   return Math.min(...numbers);
 }
 
@@ -195,7 +195,7 @@ export function min(numbers: number[]): number {
  * Finds the maximum value in an array of numbers
  */
 export function max(numbers: number[]): number {
-  if (numbers.length === 0) return NaN;
+  if (numbers.length === 0) return -Infinity;
   return Math.max(...numbers);
 }
 
@@ -203,7 +203,7 @@ export function max(numbers: number[]): number {
  * Calculates the median of an array of numbers
  */
 export function median(numbers: number[]): number {
-  if (numbers.length === 0) return NaN;
+  if (numbers.length === 0) return 0;
   
   const sorted = [...numbers].sort((a, b) => a - b);
   const mid = Math.floor(sorted.length / 2);

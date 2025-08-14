@@ -186,13 +186,23 @@ export function retry<T extends (...args: any[]) => any>(
  */
 export function measureTime<T extends (...args: any[]) => any>(
   func: T
-): (...args: Parameters<T>) => { result: ReturnType<T>; time: number } {
-  return (...args: Parameters<T>) => {
+): (...args: Parameters<T>) => ReturnType<T> extends Promise<any> 
+  ? Promise<{ result: Awaited<ReturnType<T>>; time: number }>
+  : { result: ReturnType<T>; time: number } {
+  return ((...args: Parameters<T>) => {
     const start = performance.now();
     const result = func(...args);
+    
+    if (result instanceof Promise) {
+      return result.then(res => {
+        const time = performance.now() - start;
+        return { result: res, time };
+      });
+    }
+    
     const time = performance.now() - start;
     return { result, time };
-  };
+  }) as any;
 }
 
 /**

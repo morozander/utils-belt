@@ -120,6 +120,8 @@ export function reverse(str: string): string {
  * Counts the occurrences of a substring in a string
  */
 export function countOccurrences(str: string, substring: string): number {
+  if (substring === '') return 0;
+  
   let count = 0;
   let position = str.indexOf(substring);
   

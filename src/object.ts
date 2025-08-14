@@ -5,9 +5,14 @@
 /**
  * Creates a deep clone of an object
  */
-export function deepClone<T>(obj: T): T {
+export function deepClone<T>(obj: T, visited = new WeakMap()): T {
   if (obj === null || typeof obj !== 'object') {
     return obj;
+  }
+  
+  // Handle circular references
+  if (visited.has(obj)) {
+    return visited.get(obj);
   }
   
   if (obj instanceof Date) {
@@ -15,14 +20,20 @@ export function deepClone<T>(obj: T): T {
   }
   
   if (obj instanceof Array) {
-    return obj.map(item => deepClone(item)) as T;
+    const cloned = [] as any;
+    visited.set(obj, cloned);
+    for (let i = 0; i < obj.length; i++) {
+      cloned[i] = deepClone(obj[i], visited);
+    }
+    return cloned as T;
   }
   
   if (typeof obj === 'object') {
     const cloned = {} as T;
+    visited.set(obj, cloned);
     for (const key in obj) {
       if (obj.hasOwnProperty(key)) {
-        cloned[key] = deepClone(obj[key]);
+        cloned[key] = deepClone(obj[key], visited);
       }
     }
     return cloned;
@@ -83,6 +94,10 @@ export function omit<T extends Record<string, any>, K extends keyof T>(
  * Gets a nested property value using a path string
  */
 export function get<T>(obj: any, path: string, defaultValue?: T): T | undefined {
+  if (path === '') {
+    return obj;
+  }
+  
   const keys = path.split('.');
   let result = obj;
   
