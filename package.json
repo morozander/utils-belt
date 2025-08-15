@@ -1,6 +1,6 @@
 {
-  "name": "micro-toolbox",
-  "description": "A micro-sized utility library with common helper functions for JavaScript/TypeScript projects",
+  "name": "utils-belt",
+  "description": "A utility belt library with essential helper functions for JavaScript/TypeScript projects",
   "version": "1.0.0",
   "type": "module",
   "main": "dist/index.js",
@@ -29,12 +29,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/morozander/micro-toolbox.git"
+    "url": "https://github.com/morozander/utils-belt.git"
   },
   "bugs": {
-    "url": "https://github.com/morozander/micro-toolbox/issues"
+    "url": "https://github.com/morozander/utils-belt/issues"
   },
-  "homepage": "https://github.com/morozander/micro-toolbox#readme",
+  "homepage": "https://github.com/morozander/utils-belt#readme",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",

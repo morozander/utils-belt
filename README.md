@@ -1,6 +1,6 @@
-# Micro Toolbox
+# Utils Belt
 
-A micro-sized utility library with common helper functions for JavaScript/TypeScript projects.
+A utility belt library with essential helper functions for JavaScript/TypeScript projects.
 
 ## Features
 
@@ -14,7 +14,7 @@ A micro-sized utility library with common helper functions for JavaScript/TypeSc
 ## Installation
 
 ```bash
-npm install micro-toolbox
+npm install utils-belt
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ import {
   capitalize, 
   formatCurrency,
   debounce 
-} from 'micro-toolbox';
+} from 'utils-belt';
 
 // Array utilities
 const numbers = range(1, 10); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -58,7 +58,7 @@ const {
   capitalize, 
   formatCurrency,
   debounce 
-} = require('micro-toolbox');
+} = require('utils-belt');
 ```
 
 ## API Reference
@@ -154,7 +154,7 @@ const {
 ### Working with Arrays
 
 ```typescript
-import { range, unique, groupBy, chunk } from 'micro-toolbox';
+import { range, unique, groupBy, chunk } from 'utils-belt';
 
 // Create a range of numbers
 const numbers = range(1, 20, 2); // [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
@@ -178,7 +178,7 @@ const chunks = chunk([1, 2, 3, 4, 5, 6], 2); // [[1, 2], [3, 4], [5, 6]]
 ### Working with Objects
 
 ```typescript
-import { deepClone, pick, omit, get, set } from 'micro-toolbox';
+import { deepClone, pick, omit, get, set } from 'utils-belt';
 
 // Deep clone
 const original = { user: { name: 'John', settings: { theme: 'dark' } } };
@@ -206,7 +206,7 @@ import {
   kebabCase, 
   truncate, 
   stripHtml 
-} from 'micro-toolbox';
+} from 'utils-belt';
 
 // Case conversions
 capitalize('hello world'); // "Hello world"
@@ -222,7 +222,7 @@ stripHtml('<p>Hello <strong>World</strong></p>'); // "Hello World"
 ### Working with Functions
 
 ```typescript
-import { debounce, throttle, memoize, compose } from 'micro-toolbox';
+import { debounce, throttle, memoize, compose } from 'utils-belt';
 
 // Debounce search input
 const debouncedSearch = debounce((query) => {
@@ -259,7 +259,7 @@ import {
   addDays, 
   isToday, 
   getRelativeTime 
-} from 'micro-toolbox';
+} from 'utils-belt';
 
 // Format dates
 const date = new Date();
@@ -284,7 +284,7 @@ import {
   isValidEmail, 
   isValidUrl, 
   validateSchema 
-} from 'micro-toolbox';
+} from 'utils-belt';
 
 // Type checks
 isDefined('hello'); // true

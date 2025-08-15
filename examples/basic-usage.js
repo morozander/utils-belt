@@ -1,4 +1,4 @@
-// Basic usage examples for micro-toolbox
+// Basic usage examples for utils-belt
 import {
   // Array utilities
   range,
@@ -37,7 +37,7 @@ import {
   sleep
 } from '../dist/index.js';
 
-console.log('=== Micro Toolbox Examples ===\n');
+console.log('=== Utils Belt Examples ===\n');
 
 // Array utilities
 console.log('Array Utilities:');

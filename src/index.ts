@@ -1,23 +1,23 @@
 // Array utilities
-export * from './array';
+export * from './array.js';
 
 // Object utilities
-export * from './object';
+export * from './object.js';
 
 // String utilities
-export * from './string';
+export * from './string.js';
 
 // Number utilities
-export * from './number';
+export * from './number.js';
 
 // Function utilities
-export * from './function';
+export * from './function.js';
 
 // Date utilities
-export * from './date';
+export * from './date.js';
 
 // Validation utilities
-export * from './validation';
+export * from './validation.js';
 
 // Common utilities
-export * from './common'; 
+export * from './common.js'; 
