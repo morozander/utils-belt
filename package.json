@@ -1,7 +1,7 @@
 {
   "name": "utils-belt",
   "description": "A utility belt library with essential helper functions for JavaScript/TypeScript projects",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
