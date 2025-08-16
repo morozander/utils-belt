@@ -42,7 +42,10 @@
     "test": "jest",
     "lint": "eslint src/**/*.ts",
     "format": "prettier --write src/**/*.ts",
-    "example": "node examples/basic-usage.js"
+    "example": "node examples/basic-usage.js",
+    "release:patch": "./scripts/release.sh patch",
+    "release:minor": "./scripts/release.sh minor",
+    "release:major": "./scripts/release.sh major"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",
@@ -56,5 +59,8 @@
   },
   "engines": {
     "node": ">=14.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
