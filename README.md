@@ -2,6 +2,8 @@
 
 A utility belt library with essential helper functions for JavaScript/TypeScript projects.
 
+![Utils Belt](public/belt-image.jpeg)
+
 ## Features
 
 - 🚀 **Micro-sized** - Minimal bundle size with maximum utility
